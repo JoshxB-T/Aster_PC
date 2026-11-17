@@ -26,24 +26,6 @@ export default function TabLayout() {
                 }}
             />
             <Tabs.Screen
-                name="salesorders"
-                options={{
-                    title: 'Sales Orders',
-                    tabBarIcon: ({color}) => (
-                        <FontAwesomeFreeSolid name='cart-shopping' color={color}/>
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name="packages"
-                options={{
-                    title: 'Packages',
-                    tabBarIcon: ({color}) => (
-                        <FontAwesomeFreeSolid name='box' color={color}/>
-                    ),
-                }}
-            />
-            <Tabs.Screen
                 name="stock"
                 options={{
                     title: 'Stock',

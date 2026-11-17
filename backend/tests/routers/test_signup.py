@@ -19,7 +19,7 @@ def test_missing_email_signup_field():
     response = client.post(
         "/signup",
         json={
-            "name": "John",
+            "username": "John",
             "password": "test123"
         }
     )
@@ -31,7 +31,7 @@ def test_missing_password_signup_field():
     response = client.post(
         "/signup",
         json={
-            "name": "John",
+            "username": "John",
             "email": "test1@example.com",
         }
     )
@@ -43,7 +43,7 @@ def test_password_too_short_signup():
     response = client.post(
         "/signup",
         json={
-            "name": "John",
+            "username": "John",
             "email": "test1@example.com",
             "password": "test123"
         }
@@ -56,7 +56,7 @@ def test_duplicate_email_signup():
     response = client.post(
         "/signup",
         json={
-            "name": "John",
+            "username": "John",
             "email": "test1@example.com",
             "password": "test1234"
         }

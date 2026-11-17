@@ -55,3 +55,32 @@ def test_invalid_email_format():
     )
 
     assert response.status_code == 422
+
+    
+def test_login_returns_access_token():
+    response = client.post(
+        "/login",
+        json={
+            "email": "user@example.com",
+            "password": "stringst"
+        }
+    )
+
+    assert response.status_code == 200
+    
+    data = response.json()
+
+    assert "access_token" in data
+    assert data["token_type"] == "bearer"
+    
+
+def test_invalid_login_returns_401():
+    response = client.post(
+        "/login",
+        json={
+            "email": "user@example.com",
+            "password": "wrong_password"
+        }
+    )
+
+    assert response.status_code == 401

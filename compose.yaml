@@ -12,6 +12,7 @@ services:
       REDIS_HOST: redis
       REDIS_PORT: "${REDIS_PORT}"
       DATABASE_URL: "${POSTGRES_DATABASE_URL}"
+      JWT_SECRET_KEY: "${JWT_SECRET_KEY}"
     depends_on:
       redis:
         condition: service_started

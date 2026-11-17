@@ -21,14 +21,14 @@ sys.path.insert(
 
 config = context.config
 
-database_url = os.environ["POSTGRES_HOST_DATABASE_URL"]
+database_url = os.environ["DATABASE_URL"]
 config.set_main_option("sqlalchemy.url", database_url)
 
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 from app.db.base import Base
-from app.models import Category, Product, CPU, GPU
+from app import models
 
 target_metadata = Base.metadata
 

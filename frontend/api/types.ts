@@ -41,3 +41,19 @@ export type ProductListResponse = {
 };
 
 export type CategoryFilter = "CPU" | "GPU" | null;
+
+export type LoginRequest = {
+    email: string;
+    password: string;
+};
+
+export interface LoginResponse {
+    access_token: string;
+    token_type: string;
+}
+
+export type SignupRequest = {
+    username: string;
+    email: string;
+    password: string;
+};

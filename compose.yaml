@@ -3,7 +3,7 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: aster-api
+    container_name: api
     ports:
       - "${API_PORT}:8000"
     volumes:
@@ -23,7 +23,7 @@ services:
 
   postgres:
     image: postgres:18
-    container_name: aster-postgres
+    container_name: postgres
     environment:
       POSTGRES_USER: "${POSTGRES_USER}"
       POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
@@ -40,7 +40,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: aster-redis
+    container_name: redis
     ports:
       - "${REDIS_PORT}:6379"
     volumes:
@@ -50,7 +50,7 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile 
-    container_name: aster-frontend
+    container_name: frontend
     working_dir: /app
     volumes:
       - ./frontend:/app

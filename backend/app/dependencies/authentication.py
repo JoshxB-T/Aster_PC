@@ -8,13 +8,9 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlalchemy.orm import Session
 
 from app.core.security import SECRET_KEY, ALGORITHM
-from app.db.session import SessionLocal
 from app.services.login import get_user_by_email
-
-
-def get_db():
-    with SessionLocal() as session:
-        yield session
+from app.models.login.users import Users
+from app.db.dependencies import get_db
 
 
 bearer_scheme = HTTPBearer()
@@ -23,7 +19,7 @@ bearer_scheme = HTTPBearer()
 def get_current_user(
     credentials: HTTPAuthorizationCredentials = Depends(bearer_scheme),
     session: Session = Depends(get_db)
-):
+) -> Users:
     token = credentials.credentials
 
     try:

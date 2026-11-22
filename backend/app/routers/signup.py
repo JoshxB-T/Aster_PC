@@ -1,21 +1,19 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, HTTPException
 
 from sqlalchemy.orm import Session
 
-from app.db.session import SessionLocal
+from app.db.dependencies import get_db
 from app.models.login.users import Users
-from app.services.signup import create_account_password_hash, check_existing_user_by_email
+from app.services.signup import (
+    create_account_password_hash,
+    check_existing_user_by_email
+)
 from app.schemas.signup import SignupRequest
 
 router = APIRouter(
     prefix="/signup",
     tags=["signup"],
 )
-
-def get_db():
-    with SessionLocal() as session:
-        yield session
-
 
 @router.post(
     "",
@@ -33,7 +31,7 @@ def signup(
     try:
         password_hash = create_account_password_hash(
             credentials.password
-        ) 
+        )
 
         user = Users(
             username=credentials.username,

@@ -18,7 +18,7 @@ class User_Roles(Base):
     )
 
     role_id: Mapped[int] = mapped_column(
-        ForeignKey("roles.id"),
+        ForeignKey("roles.id", ondelete="CASCADE"),
         primary_key=True
     )
 

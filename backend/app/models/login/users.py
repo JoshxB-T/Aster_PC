@@ -2,6 +2,7 @@ from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from app.models.login.user_activity import User_Activity
+    from app.models.login.user_roles import User_Roles
 
 from datetime import datetime
 
@@ -39,5 +40,9 @@ class Users(Base):
     )
 
     activities: Mapped[list["User_Activity"]] = relationship(
+        back_populates="user"
+    )
+
+    user_roles: Mapped[list["User_Roles"]] = relationship(
         back_populates="user"
     )

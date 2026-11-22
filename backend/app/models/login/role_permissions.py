@@ -13,11 +13,13 @@ class Role_Permissions(Base):
     __tablename__ = "role_permissions"
 
     role_id: Mapped[int] = mapped_column(
-        ForeignKey("roles.id")
+        ForeignKey("roles.id"),
+        primary_key=True
     )
 
     permission_id: Mapped[int] = mapped_column(
-        ForeignKey("permissions.id")
+        ForeignKey("permissions.id"),
+        primary_key=True
     )
 
     role: Mapped["Roles"] = relationship(

@@ -15,6 +15,7 @@ class Permissions(Base):
 
     name: Mapped[str] = mapped_column(
         String(50),
+        unique=True,
         nullable=False
     )
 

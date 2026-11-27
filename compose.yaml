@@ -18,6 +18,8 @@ services:
         condition: service_started
       postgres:
         condition: service_healthy
+    env_file:
+      - ./backend/.env
     command: >
       python3 -m app.main
 

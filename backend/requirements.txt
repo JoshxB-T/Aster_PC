@@ -9,3 +9,4 @@ httpx2
 email-validator
 bcrypt
 PyJWT
+redis

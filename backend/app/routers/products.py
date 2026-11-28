@@ -16,7 +16,7 @@ from redis.exceptions import RedisError
 
 from sqlalchemy.orm import Session
 
-from app.db.session import SessionLocal
+from app.db.dependencies import get_db
 
 from app.schemas.product import (
     CPUDetailsResponse,
@@ -36,10 +36,6 @@ router = APIRouter(
     prefix="/products",
     tags=["Products"],
 )
-
-def get_db():
-    with SessionLocal() as session:
-        yield session
 
 def get_cached_response(
     redis: Redis | None,
